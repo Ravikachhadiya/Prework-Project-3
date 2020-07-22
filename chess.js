@@ -1,6 +1,6 @@
 let queen = {
     direction: 'S',
-    position: [4, 0],
+    position: [0, 4],
     whereabouts: []
 };
 
@@ -39,9 +39,10 @@ function changeDirection(direction) {
             console.log(queen.direction);
             break;
         default:
+            console.log("Don't try to move out!");
             break;
-
     }
+    updatePosition()
 }
 
 function moveForward() {
@@ -54,73 +55,99 @@ function moveForward() {
             if (x != 0) {
                 x -= 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "S":
             if (x != 7) {
                 x += 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "E":
             if (y != 7) {
                 y += 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "W":
             if (y != 0) {
                 y -= 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "NE":
             if (x != 0 && y != 7) {
                 x -= 1;
                 y += 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "NW":
             if (x != 0 && y != 0) {
                 x -= 1;
                 y -= 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "SE":
             if (x != 7 && y != 7) {
                 x += 1;
                 y += 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "SW":
             if (x != 7 && y != 0) {
                 x += 1;
                 y -= 1;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         default:
             console.log("Don't try to move out!");
             break;
+    }
+
+    updatePosition()
+
+    if (flag == 0) {
+        console.log(queen.direction);
+        console.log(whereabouts[0]);
+    }
+    else {
+        console.log("Don't try to move out!");
     }
 }
 
@@ -134,74 +161,101 @@ function jumpMoveForward(steps) {
             if (x != 0 && (x - steps) >= 0) {
                 x -= steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "S":
             if (x != 7 && (x + steps) <= 7) {
                 x += steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "E":
             if (y != 7 && (y + steps) <= 7) {
                 y += steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "W":
             if (y != 0 && (y - steps) >= 0) {
                 y -= steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "NE":
             if (x != 0 && (x - steps) >= 0 && y != 7 && (y + steps) <= 7) {
                 x -= steps;
                 y += steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "NW":
             if (x != 0 && (x - steps) >= 0 && y != 0 && (y - steps) >= 0) {
                 x -= steps;
                 y -= steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "SE":
             if (x != 7 && (x + steps) <= 7 && y != 7 && (y + steps) <= 7) {
                 x += steps;
                 y += steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         case "SW":
             if (x != 7 && (x + steps) <= 7 && y != 0 && (y - steps) >= 0) {
                 x += steps;
                 y -= steps;
                 queen.position = [x, y];
+                flag = 0
             }
-            console.log(queen.direction);
-            console.log(queen.position[0] + "" + queen.position[1]);
+            else {
+                flag = 1
+            }
             break;
         default:
             console.log("Don't try to move out!");
             break;
     }
+
+    updatePosition()
+
+    if (flag == 0) {
+        console.log(queen.direction);
+        console.log(whereabouts[0]);
+    }
+    else {
+        console.log("Don't try to move out!");
+    }
+
 }
 
 function updatePosition() {
@@ -240,4 +294,5 @@ function updatePosition() {
 
     current_position = x + y;
     whereabouts = [current_position];
+    console.log(whereabouts);
 }
